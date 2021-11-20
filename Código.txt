@@ -1,0 +1,119 @@
+#include <Ethernet.h> // shield eth
+#include <PubSubClient.h> // mqtt client
+#include <Servo.h> //servo lib
+
+Servo servoH;
+Servo servoM;
+
+#define TOPIC  "hora"
+#define PUBLISH_DELAY   3000
+const int buzzer = 12;
+const int sensor = 3;
+long lastMsg = 0;
+
+String ip = "192.168.0.5";
+IPAddress ipa(192,168,0,5);
+
+uint8_t mac[6] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x06};
+
+const char clientId = "relogio";
+
+EthernetClient ethClient;
+PubSubClient mqttClient;
+
+
+void setup() {
+//configurar servos
+  servoH.attach(2); 
+  servoM.attach(5); 
+//configurar sensor pid
+  pinMode(sensor, INPUT);
+
+ //configurar pino do buzzer
+ pinMode(buzzer, INPUT);
+ 
+  Serial.begin(9600);
+  while (!Serial) {};
+
+//bloco para configurar internet
+//Ethernet.begin(mac, "192.168.0.5", "8.8.8.8")
+  Ethernet.begin(mac,ipa);
+ /*if (Ethernet.begin(mac,ipa)) {
+    //Serial.println(F("Unable to configure Ethernet using DHCP"));
+    for (;;);
+  }
+  */
+  Serial.println(F("Ethernet configured via DHCP")); 
+  Serial.print("IP address: ");
+  Serial.println(Ethernet.localIP());
+  Serial.println();
+  ip = String (Ethernet.localIP()[0]);
+  ip = ip + ".";
+  ip = ip + String (Ethernet.localIP()[1]);
+  ip = ip + ".";
+  ip = ip + String (Ethernet.localIP()[2]);
+  ip = ip + ".";
+  ip = ip + String (Ethernet.localIP()[3]);
+  Serial.println(ip);
+
+//configurar servidor mqtt
+  mqttClient.setClient(ethClient); 
+  mqttClient.setServer("192.168.0.250", 1883);
+  mqttClient.setCallback(callback);
+}
+
+void loop() {
+
+   if (!mqttClient.connected()) { // reconecta se desconectado do mqtt
+    reconnect();
+  }
+  long now = millis();
+  mqttClient.loop();//aguarda mensagem mqtt
+    if (now - lastMsg > 20000) {
+        lastMsg = now;
+        if (sensor == HIGH) {            // caso detecte movimento mandar mensagem para o node red
+            Serial.println("pessoa reconhecida");
+            mqttClient.publish("sensor", "1");
+ } 
+ }
+}
+
+void reconnect() {
+  // Loop until we're reconnected
+  while (!mqttClient.connected()) 
+  {
+    Serial.print("Attempting MQTT connection...");
+
+    // Attempt to connect
+    if (mqttClient.connect("relogio"))
+    {
+      Serial.println("connected");
+     //once connected to MQTT broker, subscribe command if any
+      mqttClient.subscribe("hora");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(mqttClient.state());
+      Serial.println(" try again in 5 seconds");
+      // Wait 6 seconds before retrying
+      delay(6000);
+    }
+  }
+} 
+
+void callback(char* topic, byte* payload, unsigned int length) 
+{
+  Serial.print("Command from MQTT broker is: [");
+  Serial.print(topic);
+  int hora = (payload[0])+payload[1]; //pega primeiros digitos da hora
+  int minu = (payload[2])+payload[3]; //pega os dois ultimos digitos do minuto
+  if (payload[2]+payload[3] != 0){
+  tone(buzzer,261);
+    // Espera um tempo para Desativar
+    delay(200);
+    //Desativa o buzzer
+    noTone(buzzer); }
+  int grauHora = hora * 15; // converte a hora em graus 180/ 12 = 15;
+  int grauMin = minu * 3; // converte minutos em graus 180/60 = 3;
+  // step one revolution  in one direction:
+  servoH.write(grauHora);
+  servoM.write(grauMin);}
