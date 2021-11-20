@@ -2,7 +2,7 @@
 <H3 align="center"> MENU DE ACESSOS </h3>
 <H5 align="center"> Relógio que informa 
 para o usuário a hora que foi detectado o movimento através de seu Sensor PIR acoplado 
-na protoboard. Para informar o usuário. Ao informar a hora, os servos motores, reiniciam o seu 
+na protoboard. Ao informar a hora, os servos motores, reiniciam o seu 
 movimento do ponto 0 até que chegue uma nova detecção de movimento, informando 
 novamente a hora para o usuário.</h5>
 
