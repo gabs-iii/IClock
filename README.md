@@ -1,4 +1,4 @@
-<h1 align="center"> PROJETO: IClock </h1>
+<h1 align="center"> IClock </h1>
 <H3 align="center"> MENU DE ACESSOS </h3>
 
 
