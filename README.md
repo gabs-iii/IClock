@@ -6,7 +6,7 @@
 <a href="https://github.com/gabs-iii/IClock/blob/main/C%C3%B3digo.txt"> Código do Projeto</a> •
 <a href="https://github.com/gabs-iii/IClock/blob/main/Diagrama.png"> Tinkercad</a> •
 <a href="https://github.com/gabs-iii/IClock/blob/main/Fluxograma_1.png"> Fluxograma </a>•
-<a href=""> Documentação </a>•
+<a href="https://github.com/gabs-iii/IClock/blob/main/Trabalho_Objetos_Inteligentes_Conectados.pdf"> Documentação </a>•
 <a href="https://www.youtube.com/watch?v=gqFMDKGjRvU"> Vídeo de Apresentação</a>  
 
  <ul>
