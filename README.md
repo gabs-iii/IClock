@@ -4,8 +4,8 @@
 
 <p align="center">
 <a href="https://github.com/gabs-iii/IClock/blob/main/C%C3%B3digo.txt"> Código do Projeto</a> •
-<a href="https://github.com/gabs-iii/IClock/blob/main/Diagrama.png"> Diagrama do Projeto</a> •
-<a href="https://github.com/gabs-iii/IClock/blob/main/Fluxograma_1.png"> Fluxograma do Projeto </a>•
+<a href="https://github.com/gabs-iii/IClock/blob/main/Diagrama.png"> Tinkercad</a> •
+<a href="https://github.com/gabs-iii/IClock/blob/main/Fluxograma_1.png"> Fluxograma </a>•
 <a href=""> Documentação </a>•
 <a href=" "> Vídeo de Apresentação</a>  
 
