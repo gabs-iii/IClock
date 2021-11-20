@@ -10,7 +10,8 @@ novamente a hora para o usuário.</h5>
 <a href="https://github.com/gabs-iii/IClock/blob/main/C%C3%B3digo.txt"> Código do Projeto</a> •
 <a href="https://github.com/gabs-iii/IClock/blob/main/Diagrama.png"> Tinkercad</a> •
 <a href="https://github.com/gabs-iii/IClock/blob/main/Fluxograma_1.png"> Fluxograma </a>•
-<a href="https://github.com/gabs-iii/IClock/blob/main/Trabalho_Objetos_Inteligentes_Conectados.pdf"> Documentação (Especifícações, Materiais Utilizados, Referências e etc...) </a>•
+<a href="https://github.com/gabs-iii/IClock/blob/main/Trabalho_Objetos_Inteligentes_Conectados.pdf"> Documentação </a>•
+<a href="https://github.com/gabs-iii/IClock/blob/main/nodered.png"> NodeRed </a>•
 <a href="https://www.youtube.com/watch?v=gqFMDKGjRvU"> Vídeo de Apresentação</a>  
 
  <ul>
