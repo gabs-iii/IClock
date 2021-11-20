@@ -11,7 +11,7 @@
 
  <ul>
   <p align="center">
-  <img src="projetoclock.jpeg" width="512" height="400" >
+  <img src="projeto.jpeg" width="512" height="400" >
     
     
  <p> Gabriela Fonseca Paradela - 31910701 /
